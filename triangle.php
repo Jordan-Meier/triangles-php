@@ -29,6 +29,21 @@
         return $this->side3;
     }
 
+    function isTriangle ()
+    {
+        if(($this->getSide1() + $this->getSide2() <= $this->getSide3()) || ($this->getSide3() + $this->getSide1() <= $this->getSide2()) || ($this->getSide2() + $this->getSide3() <= $this->getSide1())) {
+            echo "That is not a triangle."
+        }
+        elseif($this->getSide1() == $this->getSide2() && $this->getSide2() == $this->getSide3()) {
+            echo "Your triangle is equilateral!";
+        } elseif (($this->getSide1() == $this->getSide2()) && ($this->getSide2() != $this->getSide3()) || ($this->getSide2() == $this->getSide3()) && ($this->getSide3() != $this->getSide1()) || ($this->getSide1() == $this->getSide3()) && ($this->getSide2() != $this->getSide1()))  {
+            echo "Your triangle is isosceles";
+        } elseif ($this->getSide1() != $this->getSide2() && ($this->getSide2() != $this->getSide3()) || ($this->getSide3() != $this->getSide1())) {
+            echo "Your triangle is scalene."
+        }
+
+
+    }
 
 ?>
 
