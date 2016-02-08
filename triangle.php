@@ -5,14 +5,14 @@
         private $side2;
         private $side3;
 
-        function __construct($parcel_weight, $parcel_height, $parcel_width, $parcel_length)
+        function __construct($side_one, $side_two, $side_three)
         {
             $this->side1 = $side_one;
             $this->side2 = $side_two;
             $this->side3 = $side_three;
 
         }
-    }
+
 
     function getSide1()
     {
@@ -32,18 +32,17 @@
     function isTriangle ()
     {
         if(($this->getSide1() + $this->getSide2() <= $this->getSide3()) || ($this->getSide3() + $this->getSide1() <= $this->getSide2()) || ($this->getSide2() + $this->getSide3() <= $this->getSide1())) {
-            echo "That is not a triangle."
-        }
-        elseif($this->getSide1() == $this->getSide2() && $this->getSide2() == $this->getSide3()) {
+            echo "That is not a triangle.";
+        } elseif($this->getSide1() == $this->getSide2() && $this->getSide2() == $this->getSide3()) {
             echo "Your triangle is equilateral!";
         } elseif (($this->getSide1() == $this->getSide2()) && ($this->getSide2() != $this->getSide3()) || ($this->getSide2() == $this->getSide3()) && ($this->getSide3() != $this->getSide1()) || ($this->getSide1() == $this->getSide3()) && ($this->getSide2() != $this->getSide1()))  {
             echo "Your triangle is isosceles";
         } elseif ($this->getSide1() != $this->getSide2() && ($this->getSide2() != $this->getSide3()) || ($this->getSide3() != $this->getSide1())) {
-            echo "Your triangle is scalene."
+            echo "Your triangle is scalene.";
         }
 
-
     }
+}
 
 ?>
 
@@ -55,10 +54,14 @@
 </head>
 <body>
     <h1>Is Triangle?</h1>
-    <ul>
         <?php
+            $side_one = $_GET["side1"];
+            $side_two = $_GET["side2"];
+            $side_three = $_GET["side3"];
             $new_triangle = new Triangle ($side_one, $side_two, $side_three);
+            $get_triangle = $new_triangle->isTriangle();
+            echo "<p>" .$get_triangle. "</p>";
         ?>
-    </ul>
+
 </body>
 </html>
